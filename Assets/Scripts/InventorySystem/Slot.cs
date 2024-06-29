@@ -1,8 +1,6 @@
-﻿using System;
-using InventorySystem.Interfaces;
+﻿using InventorySystem.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace InventorySystem
 {
@@ -10,11 +8,8 @@ namespace InventorySystem
     public class Slot : MonoBehaviour, IDropHandler, ISlot
     {
         [SerializeField] private int index;
-        [SerializeField] private Image itemImage;
 
         private RectTransform _rectTransform;
-        
-        public Image ItemImage => itemImage;
 
         public int Index => index;
         
@@ -41,8 +36,7 @@ namespace InventorySystem
         {
             if (eventData.pointerDrag == null
                 || !eventData.pointerDrag.TryGetComponent(out RectTransform item)) return;
-            // item.anchoredPosition = _rectTransform.anchoredPosition;
-                
+
             item.SetParent(gameObject.transform);
             item.localPosition = Vector3.zero;
         }
