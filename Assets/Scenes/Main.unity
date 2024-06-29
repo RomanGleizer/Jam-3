@@ -3162,6 +3162,7 @@ GameObject:
   - component: {fileID: 2051766022}
   - component: {fileID: 2051766021}
   - component: {fileID: 2051766020}
+  - component: {fileID: 2051766024}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -3246,7 +3247,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemImage: {fileID: 2051766022}
-  offset: {x: 0, y: 0, z: 0}
   cam: {fileID: 519420031}
 --- !u!114 &2051766022
 MonoBehaviour:
@@ -3286,6 +3286,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051766018}
   m_CullTransparentMesh: 1
+--- !u!114 &2051766024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051766018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640374a73dd3452a9a3ddde3e97d8fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2074403807
 GameObject:
   m_ObjectHideFlags: 0

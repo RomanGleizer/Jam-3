@@ -1,16 +1,32 @@
-﻿using InventorySystem.Interfaces;
+﻿using System;
+using InventorySystem.Interfaces;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace InventorySystem
 {
-    public class Slot : MonoBehaviour, ISlot
+    [RequireComponent(typeof(RectTransform))]
+    public class Slot : MonoBehaviour, IDropHandler, ISlot
     {
-        public int Number { get; private set; }
+        [SerializeField] private int index;
+        [SerializeField] private Image itemImage;
+
+        private RectTransform _rectTransform;
+        
+        public Image ItemImage => itemImage;
+
+        public int Index => index;
         
         public IItem CurrentItem { get; private set; }
         
         public bool IsEmpty => CurrentItem == null;
-        
+
+        private void Awake()
+        {
+            _rectTransform = GetComponent<RectTransform>();
+        }
+
         public void SetItem(IItem item)
         {
             CurrentItem = item;
@@ -19,6 +35,16 @@ namespace InventorySystem
         public void RemoveItem()
         {
             CurrentItem = null;
+        }
+
+        public void OnDrop(PointerEventData eventData)
+        {
+            if (eventData.pointerDrag == null
+                || !eventData.pointerDrag.TryGetComponent(out RectTransform item)) return;
+            // item.anchoredPosition = _rectTransform.anchoredPosition;
+                
+            item.SetParent(gameObject.transform);
+            item.localPosition = Vector3.zero;
         }
     }
 }
