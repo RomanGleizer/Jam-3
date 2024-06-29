@@ -11,7 +11,6 @@ namespace DragAndDrop
         private const float CanvasGroupAlphaOnEndDrag = 1f;
         
         [SerializeField] private Canvas canvas;
-        [SerializeField] private LevelBackground[] levels;
         
         private RectTransform _rectTransform;
         private CanvasGroup _canvasGroup;
@@ -24,7 +23,9 @@ namespace DragAndDrop
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            foreach (var level in levels)
+            var levelBackgrounds = FindObjectsOfType<LevelBackground>();
+            
+            foreach (var level in levelBackgrounds)
             {
                 if (!level.gameObject.activeSelf) continue;
                 
