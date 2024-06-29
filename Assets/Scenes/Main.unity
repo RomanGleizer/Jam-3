@@ -878,8 +878,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.98, y: 123.98}
-  m_SizeDelta: {x: 1125.19, y: 832.03}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1125.19, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &739069924
 MonoBehaviour:
@@ -932,7 +932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasTransform: {fileID: 739069923}
-  camera: {fileID: 519420031}
+  canvasParentTransform: {fileID: 739069923}
 --- !u!1 &777851759
 GameObject:
   m_ObjectHideFlags: 0
