@@ -28,6 +28,8 @@ namespace DragAndDrop
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            
+            audioSource.Play();
             PositionBeforeDrag = transform.position;
             
             var levelBackgrounds = FindObjectsOfType<LevelBackground>();
