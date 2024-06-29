@@ -11,6 +11,7 @@ namespace DragAndDrop
         private const float CanvasGroupAlphaOnEndDrag = 1f;
         
         [SerializeField] private Canvas canvas;
+        [SerializeField] private AudioSource audioSource;
         
         private RectTransform _rectTransform;
         private CanvasGroup _canvasGroup;
@@ -23,6 +24,8 @@ namespace DragAndDrop
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            audioSource.Play();
+
             var levelBackgrounds = FindObjectsOfType<LevelBackground>();
             
             foreach (var level in levelBackgrounds)
