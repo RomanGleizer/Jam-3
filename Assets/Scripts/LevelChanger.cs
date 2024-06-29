@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelChanger : MonoBehaviour
@@ -14,18 +12,30 @@ public class LevelChanger : MonoBehaviour
     {
         _hub.SetActive(false);
         _level1.SetActive(true);
+        _dialogSystem.SetActive(true);
     }
 
     public void GoLevelTwo()
     {
         _hub.SetActive(false);
         _level2.SetActive(true);
+        _dialogSystem.SetActive(true);
     }
 
     public void GoLevelThree()
     {
         _hub.SetActive(false);
         _level3.SetActive(true);
+        _dialogSystem.SetActive(true);
+    }
+
+    public void GoHub()
+    {
+        _hub.SetActive(true);
+        _dialogSystem.SetActive(false);
+        _level1.SetActive(false);
+        _level2.SetActive(false);
+        _level3.SetActive(false);
     }
 
 

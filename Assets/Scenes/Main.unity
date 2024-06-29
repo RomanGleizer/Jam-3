@@ -339,7 +339,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 148036250}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074403809}
+        m_TargetAssemblyTypeName: LevelChanger, Assembly-CSharp
+        m_MethodName: GoLevelTwo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &148036250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -894,7 +906,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 569175890}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074403809}
+        m_TargetAssemblyTypeName: LevelChanger, Assembly-CSharp
+        m_MethodName: GoLevelOne
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &569175890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2184,7 +2208,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1850175984}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074403809}
+        m_TargetAssemblyTypeName: LevelChanger, Assembly-CSharp
+        m_MethodName: GoLevelThree
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1850175984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2366,6 +2402,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2074403808}
+  - component: {fileID: 2074403809}
   m_Layer: 0
   m_Name: LevelChanger
   m_TagString: Untagged
@@ -2388,6 +2425,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2074403809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074403807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e527a7867f439e4fb9a2682a9a84d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _level1: {fileID: 270250586}
+  _level2: {fileID: 897035215}
+  _level3: {fileID: 1711716297}
+  _hub: {fileID: 1780491653}
+  _dialogSystem: {fileID: 777851759}
 --- !u!1 &2102229992
 GameObject:
   m_ObjectHideFlags: 0
