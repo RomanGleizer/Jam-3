@@ -1,6 +1,5 @@
 ﻿using Enums;
 using InventorySystem.Interfaces;
-using UnityEngine.UI;
 
 namespace DialogueSystem
 {

@@ -4,8 +4,9 @@ namespace InventorySystem.Interfaces
 {
     public interface IInventory
     {
-        IList<IItem> Items { get; }
+        Slot[] Slots { get; }
         void Put(IItem item);
         void Take(IItem item);
+        void SwapItems(int slotIndex1, int slotIndex2);
     }
 }

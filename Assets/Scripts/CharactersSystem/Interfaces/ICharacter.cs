@@ -7,7 +7,6 @@ namespace CharactersSystem.Interfaces
     public interface ICharacter
     {
         Phrase PhraseAboutReceivedItem { get; }
-        IItem ExpectedItem { get; }
         IItem ReceivedItem { get; } 
         string Name { get; }
     }
