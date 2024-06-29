@@ -1,26 +1,19 @@
-﻿using InventorySystem.Interfaces;
+﻿using DragAndDrop;
+using InventorySystem.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace InventorySystem
 {
-    [RequireComponent(typeof(RectTransform))]
     public class Slot : MonoBehaviour, IDropHandler, ISlot
     {
         [SerializeField] private int index;
-
-        private RectTransform _rectTransform;
 
         public int Index => index;
         
         public IItem CurrentItem { get; private set; }
         
         public bool IsEmpty => CurrentItem == null;
-
-        private void Awake()
-        {
-            _rectTransform = GetComponent<RectTransform>();
-        }
 
         public void SetItem(IItem item)
         {
@@ -34,11 +27,20 @@ namespace InventorySystem
 
         public void OnDrop(PointerEventData eventData)
         {
-            if (eventData.pointerDrag == null
-                || !eventData.pointerDrag.TryGetComponent(out RectTransform item)) return;
+            if (eventData.pointerDrag == null || !eventData.pointerDrag.TryGetComponent(out RectTransform rectTransform)) 
+                return;
+            
+            if (!IsEmpty && rectTransform.TryGetComponent(out ItemDragManager itemDragManager))
+            {
+                eventData.pointerDrag.transform.position = itemDragManager.PositionBeforeDrag;
+                return;
+            }
 
-            item.SetParent(gameObject.transform);
-            item.localPosition = Vector3.zero;
+            rectTransform.SetParent(gameObject.transform);
+            rectTransform.localPosition = Vector3.zero;
+            
+            if (rectTransform.TryGetComponent(out IItem item))
+                CurrentItem = item;
         }
     }
 }
