@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using InventorySystem.Interfaces;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace DragAndDrop
@@ -15,6 +16,9 @@ namespace DragAndDrop
         
         private RectTransform _rectTransform;
         private CanvasGroup _canvasGroup;
+        private bool _isInventoryFull;
+        
+        public Vector3 PositionBeforeDrag { get; private set; }
         
         private void Awake()
         {
@@ -24,8 +28,8 @@ namespace DragAndDrop
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            audioSource.Play();
-
+            PositionBeforeDrag = transform.position;
+            
             var levelBackgrounds = FindObjectsOfType<LevelBackground>();
             
             foreach (var level in levelBackgrounds)

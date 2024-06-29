@@ -8,7 +8,6 @@ namespace InventorySystem.Interfaces
         Image Image { get; }
         string Name { get; }
         string Description { get; }
-        Vector2 CurrentPosition { get; }
         Vector2 EndPosition { get; }
     }
 }
