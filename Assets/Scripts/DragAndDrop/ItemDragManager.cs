@@ -17,6 +17,7 @@ namespace DragAndDrop
         private RectTransform _rectTransform;
         private CanvasGroup _canvasGroup;
         private bool _isInventoryFull;
+        private Transform _currentParent;
         
         public Vector3 PositionBeforeDrag { get; private set; }
         
@@ -28,6 +29,12 @@ namespace DragAndDrop
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            _currentParent = transform.parent;
+
+            if (_currentParent.TryGetComponent(out ISlot slot))
+            {
+                slot.RemoveItem();
+            }
             
             audioSource.Play();
             PositionBeforeDrag = transform.position;
