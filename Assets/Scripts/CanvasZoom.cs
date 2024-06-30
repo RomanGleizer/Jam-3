@@ -12,7 +12,7 @@ public class CanvasZoom : MonoBehaviour
     private bool isDragging = false;
     private Vector2 lastMousePosition;
     private Vector3 originalPosition;
-    
+
     public bool IsActive { get; set; }
 
     void Start()
@@ -23,7 +23,8 @@ public class CanvasZoom : MonoBehaviour
     void Update()
     {
         HandleZoom();
-        HandleDrag();
+        if (!IsActive)
+            HandleDrag();
     }
 
     private void HandleZoom()
@@ -60,8 +61,9 @@ public class CanvasZoom : MonoBehaviour
 
     private void HandleDrag()
     {
-        if (Input.GetMouseButtonDown(0) && IsActive)
+        if (Input.GetMouseButtonDown(0) && !IsActive)
         {
+            print(2);
             isDragging = true;
             lastMousePosition = Input.mousePosition;
         }

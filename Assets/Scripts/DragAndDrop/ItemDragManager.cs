@@ -15,7 +15,7 @@ namespace DragAndDrop
         private const float CanvasGroupAlphaOnEndDrag = 1f;
         
         [SerializeField] private AudioSource audioSource;
-        [SerializeField] private CanvasZoom[] canvasZooms;
+        private CanvasZoom[] canvasZooms;
         
         private RectTransform _rectTransform;
         private CanvasGroup _canvasGroup;
@@ -60,9 +60,11 @@ namespace DragAndDrop
             
             _canvasGroup.alpha = CanvasGroupAlphaOnBeginDrag;
 
+            canvasZooms = FindObjectsOfType<CanvasZoom>();
             foreach (var canvasZoom in canvasZooms)
             {
-                canvasZoom.IsActive = true;    
+                canvasZoom.IsActive = true;
+                print(1);
             }
             _canvasGroup.blocksRaycasts = false;
         }
@@ -71,11 +73,14 @@ namespace DragAndDrop
         {
             _canvasGroup.alpha = CanvasGroupAlphaOnEndDrag;
             _canvasGroup.blocksRaycasts = true;
-            
+
+            canvasZooms = FindObjectsOfType<CanvasZoom>();
             foreach (var canvasZoom in canvasZooms)
             {
-                canvasZoom.IsActive = false;    
+                canvasZoom.IsActive = false;
             }
+
+            
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -83,11 +88,11 @@ namespace DragAndDrop
             var backgrounds = FindObjectsOfType<LevelBackground>();
             foreach (var background in backgrounds)
             {
-                if (!background.TryGetComponent(out Image levelBackground) ||
-                    !levelBackground.gameObject.activeSelf) continue;
-                
-                _rectTransform.anchoredPosition += eventData.delta / levelBackground.rectTransform.localScale;
-                break;
+                if (background.TryGetComponent(out Image levelBackground) && levelBackground.gameObject.activeSelf)
+                {
+                    _rectTransform.anchoredPosition += eventData.delta / levelBackground.rectTransform.localScale;
+                    break;
+                }
             }
         }
     }
