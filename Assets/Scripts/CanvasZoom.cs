@@ -5,13 +5,15 @@ public class CanvasZoom : MonoBehaviour
     [SerializeField] private RectTransform canvasTransform;
     [SerializeField] private RectTransform canvasParentTransform;
 
-    private float zoomSpeed = 0.1f;  // Zoom speed
-    private float minZoom = 0.5f;    // Minimum zoom scale
-    private float maxZoom = 2f;      // Maximum zoom scale
+    private float zoomSpeed = 0.1f;
+    private float minZoom = 0.5f;
+    private float maxZoom = 2f;
 
     private bool isDragging = false;
     private Vector2 lastMousePosition;
     private Vector3 originalPosition;
+    
+    public bool IsActive { get; set; }
 
     void Start()
     {
@@ -58,7 +60,7 @@ public class CanvasZoom : MonoBehaviour
 
     private void HandleDrag()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && IsActive)
         {
             isDragging = true;
             lastMousePosition = Input.mousePosition;

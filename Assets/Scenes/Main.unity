@@ -512,6 +512,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 777851762}
   audioSource: {fileID: 120455256}
+  canvasZooms:
+  - {fileID: 739069926}
+  - {fileID: 547216567}
+  - {fileID: 1371246023}
 --- !u!61 &120455260
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -962,6 +966,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 777851762}
   audioSource: {fileID: 151087743}
+  canvasZooms:
+  - {fileID: 739069926}
+  - {fileID: 547216567}
+  - {fileID: 1371246023}
 --- !u!61 &151087747
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1937,6 +1945,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 777851762}
   audioSource: {fileID: 497003920}
+  canvasZooms:
+  - {fileID: 739069926}
+  - {fileID: 547216567}
+  - {fileID: 1371246023}
 --- !u!61 &497003924
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2452,6 +2464,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 777851762}
   audioSource: {fileID: 541630889}
+  canvasZooms:
+  - {fileID: 739069926}
+  - {fileID: 547216567}
+  - {fileID: 1371246023}
 --- !u!61 &541630893
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2982,6 +2998,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 777851762}
   audioSource: {fileID: 582336829}
+  canvasZooms:
+  - {fileID: 739069926}
+  - {fileID: 547216567}
+  - {fileID: 1371246023}
 --- !u!61 &582336833
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3272,6 +3292,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 777851762}
   audioSource: {fileID: 725785329}
+  canvasZooms:
+  - {fileID: 739069926}
+  - {fileID: 547216567}
+  - {fileID: 1371246023}
 --- !u!61 &725785333
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3669,6 +3693,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 777851762}
   audioSource: {fileID: 750247626}
+  canvasZooms:
+  - {fileID: 739069926}
+  - {fileID: 547216567}
+  - {fileID: 1371246023}
 --- !u!61 &750247630
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4802,6 +4830,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 777851762}
   audioSource: {fileID: 1192563038}
+  canvasZooms:
+  - {fileID: 739069926}
+  - {fileID: 547216567}
+  - {fileID: 1371246023}
 --- !u!61 &1192563042
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6696,6 +6728,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 777851762}
   audioSource: {fileID: 2051766027}
+  canvasZooms:
+  - {fileID: 739069926}
+  - {fileID: 547216567}
+  - {fileID: 1371246023}
 --- !u!114 &2051766025
 MonoBehaviour:
   m_ObjectHideFlags: 0

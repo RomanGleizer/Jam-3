@@ -1,9 +1,8 @@
-﻿using System;
-using System.Linq;
-using InventorySystem;
+﻿using System.Linq;
 using InventorySystem.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace DragAndDrop
 {
@@ -15,8 +14,8 @@ namespace DragAndDrop
         private const float CanvasGroupAlphaOnBeginDrag = .6f;
         private const float CanvasGroupAlphaOnEndDrag = 1f;
         
-        [SerializeField] private Canvas canvas;
         [SerializeField] private AudioSource audioSource;
+        [SerializeField] private CanvasZoom[] canvasZooms;
         
         private RectTransform _rectTransform;
         private CanvasGroup _canvasGroup;
@@ -25,6 +24,8 @@ namespace DragAndDrop
         public Vector3 PositionBeforeDrag { get; private set; }
         
         public Transform ParentBeforeDrag { get; private set; }
+        
+        public bool IsActive { get; private set; }
         
         private void Awake()
         {
@@ -57,8 +58,13 @@ namespace DragAndDrop
                 transform.SetParent(level.transform); 
                 break;
             }
-
+            
             _canvasGroup.alpha = CanvasGroupAlphaOnBeginDrag;
+
+            foreach (var canvasZoom in canvasZooms)
+            {
+                canvasZoom.IsActive = true;    
+            }
             _canvasGroup.blocksRaycasts = false;
         }
 
@@ -66,6 +72,11 @@ namespace DragAndDrop
         {
             _canvasGroup.alpha = CanvasGroupAlphaOnEndDrag;
             _canvasGroup.blocksRaycasts = true;
+            
+            foreach (var canvasZoom in canvasZooms)
+            {
+                canvasZoom.IsActive = false;    
+            }
 
             if (eventData.pointerDrag.transform.position != _item.EndPosition ||
                 !eventData.pointerDrag.TryGetComponent(out IItem item)) return;
@@ -80,7 +91,15 @@ namespace DragAndDrop
 
         public void OnDrag(PointerEventData eventData)
         {
-            _rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+            var backgrounds = FindObjectsOfType<LevelBackground>();
+            foreach (var background in backgrounds)
+            {
+                if (background.TryGetComponent(out Image levelBackground) && levelBackground.gameObject.activeSelf)
+                {
+                    _rectTransform.anchoredPosition += eventData.delta / levelBackground.rectTransform.localScale;
+                    break;
+                }       
+            }
         }
     }
 }
