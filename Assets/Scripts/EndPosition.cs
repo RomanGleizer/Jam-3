@@ -9,7 +9,6 @@ public class EndPosition : MonoBehaviour, IDropHandler
     [SerializeField] private Character char1;
     [SerializeField] private Character char2;
 
-
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag == null ||
@@ -18,6 +17,11 @@ public class EndPosition : MonoBehaviour, IDropHandler
         
         if (rectTransform.TryGetComponent(out IItem item) && item.Id == itemId)
         {
+            var canvasZooms = FindObjectsOfType<CanvasZoom>();
+            foreach (var canvasZoom in canvasZooms)
+            {
+                canvasZoom.IsActive = false;
+            }
             rectTransform.gameObject.SetActive(false);
             char1.EndSpeech(itemId);
             char2.EndSpeech(itemId);
