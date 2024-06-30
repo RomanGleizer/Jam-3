@@ -1,5 +1,5 @@
-﻿using UnityEngine.UI;
-using Vector2 = UnityEngine.Vector2;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace InventorySystem.Interfaces
 {
@@ -8,6 +8,7 @@ namespace InventorySystem.Interfaces
         Image Image { get; }
         string Name { get; }
         string Description { get; }
-        Vector2 EndPosition { get; }
+        Vector3 EndPosition { get; }
+        int Id { get; }
     }
 }
