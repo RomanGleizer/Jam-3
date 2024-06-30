@@ -1,3 +1,4 @@
+using CharactersSystem;
 using UnityEngine;
 
 public class LevelChanger : MonoBehaviour
@@ -9,8 +10,10 @@ public class LevelChanger : MonoBehaviour
     [SerializeField] private GameObject _dialogSystem;
     [SerializeField] private GameObject _start;
 
-    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private Character char1;
+    [SerializeField] private Character char2;
 
+    [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip main;
 
     private void Awake()
@@ -30,6 +33,7 @@ public class LevelChanger : MonoBehaviour
         _hub.SetActive(false);
         _level1.SetActive(true);
         _dialogSystem.SetActive(true);
+        
     }
 
     public void GoLevelTwo()
