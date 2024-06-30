@@ -6,6 +6,7 @@ namespace DragAndDrop
 {
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(CanvasGroup))]
+    [RequireComponent(typeof(IItem))]
     public class ItemDragManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         private const float CanvasGroupAlphaOnBeginDrag = .6f;
@@ -16,6 +17,7 @@ namespace DragAndDrop
         
         private RectTransform _rectTransform;
         private CanvasGroup _canvasGroup;
+        private IItem _item;
         
         public Vector3 PositionBeforeDrag { get; private set; }
         
@@ -58,9 +60,11 @@ namespace DragAndDrop
 
         public void OnEndDrag(PointerEventData eventData)
         {
-
             _canvasGroup.alpha = CanvasGroupAlphaOnEndDrag;
             _canvasGroup.blocksRaycasts = true;
+            
+            if (eventData.pointerDrag.transform.position == _item.EndPosition)
+                eventData.pointerDrag.SetActive(false);
         }
 
         public void OnDrag(PointerEventData eventData)
