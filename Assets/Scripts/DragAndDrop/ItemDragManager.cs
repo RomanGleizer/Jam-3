@@ -56,6 +56,7 @@ namespace DragAndDrop
                     continue;
                 
                 transform.SetParent(level.transform); 
+                transform.localScale = Vector3.one;
                 break;
             }
             

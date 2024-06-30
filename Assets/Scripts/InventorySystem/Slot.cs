@@ -37,6 +37,7 @@ namespace InventorySystem
 
             rectTransform.SetParent(gameObject.transform);
             rectTransform.localPosition = Vector3.zero;
+            rectTransform.localScale = Vector3.one;
         }
     }
 }
