@@ -16,10 +16,10 @@ namespace DragAndDrop
         
         private RectTransform _rectTransform;
         private CanvasGroup _canvasGroup;
-        private bool _isInventoryFull;
-        private Transform _currentParent;
         
         public Vector3 PositionBeforeDrag { get; private set; }
+        
+        public Transform ParentBeforeDrag { get; private set; }
         
         private void Awake()
         {
@@ -29,32 +29,36 @@ namespace DragAndDrop
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            _currentParent = transform.parent;
-
-            if (_currentParent.TryGetComponent(out ISlot slot))
-            {
-                slot.RemoveItem();
-            }
-            
             audioSource.Play();
-            PositionBeforeDrag = transform.position;
-            
+
+            if (transform.parent.TryGetComponent(out ISlot _))
+            {
+                PositionBeforeDrag = default;
+                ParentBeforeDrag = transform.parent;
+            }
+            else
+            {
+                ParentBeforeDrag = null;
+                PositionBeforeDrag = transform.position;
+            }
+
             var levelBackgrounds = FindObjectsOfType<LevelBackground>();
-            
             foreach (var level in levelBackgrounds)
             {
-                if (!level.gameObject.activeSelf) continue;
+                if (!level.gameObject.activeSelf) 
+                    continue;
                 
                 transform.SetParent(level.transform); 
                 break;
             }
-            
+
             _canvasGroup.alpha = CanvasGroupAlphaOnBeginDrag;
             _canvasGroup.blocksRaycasts = false;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+
             _canvasGroup.alpha = CanvasGroupAlphaOnEndDrag;
             _canvasGroup.blocksRaycasts = true;
         }
