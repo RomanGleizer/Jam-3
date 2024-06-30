@@ -64,7 +64,6 @@ namespace DragAndDrop
             foreach (var canvasZoom in canvasZooms)
             {
                 canvasZoom.IsActive = true;
-                print(1);
             }
             _canvasGroup.blocksRaycasts = false;
         }

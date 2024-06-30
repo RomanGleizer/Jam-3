@@ -61,9 +61,8 @@ public class CanvasZoom : MonoBehaviour
 
     private void HandleDrag()
     {
-        if (Input.GetMouseButtonDown(0) && !IsActive)
+        if (Input.GetMouseButtonDown(0))
         {
-            print(2);
             isDragging = true;
             lastMousePosition = Input.mousePosition;
         }

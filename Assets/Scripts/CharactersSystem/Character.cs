@@ -30,5 +30,10 @@ namespace CharactersSystem
             
             eventData.pointerDrag.transform.position = item.PositionBeforeDrag;
         }
+
+        public void EndSpeech(int id)
+        {
+            speech.SayPhraseDone(id);
+        }
     }
 }
