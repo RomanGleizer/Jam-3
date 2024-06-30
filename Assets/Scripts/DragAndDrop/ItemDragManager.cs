@@ -25,8 +25,6 @@ namespace DragAndDrop
         
         public Transform ParentBeforeDrag { get; private set; }
         
-        public bool IsActive { get; private set; }
-        
         private void Awake()
         {
             _item = GetComponent<IItem>();
@@ -78,16 +76,6 @@ namespace DragAndDrop
             {
                 canvasZoom.IsActive = false;    
             }
-
-            if (eventData.pointerDrag.transform.position != _item.EndPosition ||
-                !eventData.pointerDrag.TryGetComponent(out IItem item)) return;
-            
-            var levelBackgrounds = FindObjectsOfType<LevelBackground>();
-            
-            if (levelBackgrounds.All(level => level.Id != item.TargetLevelIndex)) 
-                return;
-            
-            eventData.pointerDrag.SetActive(false);
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -95,11 +83,11 @@ namespace DragAndDrop
             var backgrounds = FindObjectsOfType<LevelBackground>();
             foreach (var background in backgrounds)
             {
-                if (background.TryGetComponent(out Image levelBackground) && levelBackground.gameObject.activeSelf)
-                {
-                    _rectTransform.anchoredPosition += eventData.delta / levelBackground.rectTransform.localScale;
-                    break;
-                }       
+                if (!background.TryGetComponent(out Image levelBackground) ||
+                    !levelBackground.gameObject.activeSelf) continue;
+                
+                _rectTransform.anchoredPosition += eventData.delta / levelBackground.rectTransform.localScale;
+                break;
             }
         }
     }
