@@ -7,6 +7,9 @@ namespace CharactersSystem
 {
     public class Character : MonoBehaviour, IDropHandler
     {
+        public CharacterChanger changer;
+        public CharacterSpeech speech;
+
         public void OnDrop(PointerEventData eventData)
         {
             if (eventData.pointerDrag == null ||
@@ -24,6 +27,7 @@ namespace CharactersSystem
             }
             
             eventData.pointerDrag.transform.position = item.PositionBeforeDrag;
+            speech.SayPhraseItem(rectTransform.GetComponent<IItem>().Id);
         }
     }
 }

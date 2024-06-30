@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class CharacterChanger : MonoBehaviour
 {
-    [SerializeField] private Image[] sprites;
+    [SerializeField] private Sprite[] sprites;
     [SerializeField] private Image imageSource;
 
     public void ChangeSprite(int levelNumber)
     {
-        imageSource = sprites[levelNumber - 1];
+        imageSource.sprite = sprites[levelNumber - 1];
     }
 }

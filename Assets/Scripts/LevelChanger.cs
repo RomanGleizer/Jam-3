@@ -33,7 +33,9 @@ public class LevelChanger : MonoBehaviour
         _hub.SetActive(false);
         _level1.SetActive(true);
         _dialogSystem.SetActive(true);
-        
+
+        char1.changer.ChangeSprite(1);
+        char2.changer.ChangeSprite(1);
     }
 
     public void GoLevelTwo()
@@ -41,6 +43,9 @@ public class LevelChanger : MonoBehaviour
         _hub.SetActive(false);
         _level2.SetActive(true);
         _dialogSystem.SetActive(true);
+
+        char1.changer.ChangeSprite(2);
+        char2.changer.ChangeSprite(2);
     }
 
     public void GoLevelThree()
@@ -48,6 +53,9 @@ public class LevelChanger : MonoBehaviour
         _hub.SetActive(false);
         _level3.SetActive(true);
         _dialogSystem.SetActive(true);
+
+        char1.changer.ChangeSprite(3);
+        char2.changer.ChangeSprite(3);
     }
 
     public void GoHub()
