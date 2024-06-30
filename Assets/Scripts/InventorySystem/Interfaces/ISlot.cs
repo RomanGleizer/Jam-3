@@ -6,6 +6,5 @@ namespace InventorySystem.Interfaces
     public interface ISlot
     {
         int Index { get; }
-        IItem CurrentItem { get; }
     }
 }

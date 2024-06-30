@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Linq;
+using InventorySystem;
 using InventorySystem.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Character = CharactersSystem.Character;
 
 namespace DragAndDrop
 {
@@ -65,9 +66,16 @@ namespace DragAndDrop
         {
             _canvasGroup.alpha = CanvasGroupAlphaOnEndDrag;
             _canvasGroup.blocksRaycasts = true;
+
+            if (eventData.pointerDrag.transform.position != _item.EndPosition ||
+                !eventData.pointerDrag.TryGetComponent(out IItem item)) return;
             
-            if (eventData.pointerDrag.transform.position == _item.EndPosition)
-                eventData.pointerDrag.SetActive(false);
+            var levelBackgrounds = FindObjectsOfType<LevelBackground>();
+            
+            if (levelBackgrounds.All(level => level.Id != item.TargetLevelIndex)) 
+                return;
+            
+            eventData.pointerDrag.SetActive(false);
         }
 
         public void OnDrag(PointerEventData eventData)

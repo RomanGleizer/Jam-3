@@ -10,8 +10,6 @@ namespace InventorySystem
         [SerializeField] private int index;
 
         public int Index => index;
-        
-        public IItem CurrentItem { get; private set; }
 
         public void OnDrop(PointerEventData eventData)
         {

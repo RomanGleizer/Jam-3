@@ -18,7 +18,9 @@ namespace CharactersSystem
             
             if (!rectTransform.TryGetComponent(out ItemDragManager item))
                 return;
-
+            
+            speech.SayPhraseItem(rectTransform.GetComponent<IItem>().Id);
+            
             if (item.ParentBeforeDrag != null)
             {
                 rectTransform.SetParent(item.ParentBeforeDrag);
@@ -27,7 +29,6 @@ namespace CharactersSystem
             }
             
             eventData.pointerDrag.transform.position = item.PositionBeforeDrag;
-            speech.SayPhraseItem(rectTransform.GetComponent<IItem>().Id);
         }
     }
 }
