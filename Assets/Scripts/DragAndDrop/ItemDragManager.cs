@@ -1,6 +1,8 @@
-﻿using InventorySystem.Interfaces;
+﻿using System;
+using InventorySystem.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Character = CharactersSystem.Character;
 
 namespace DragAndDrop
 {
@@ -25,6 +27,7 @@ namespace DragAndDrop
         
         private void Awake()
         {
+            _item = GetComponent<IItem>();
             _rectTransform = GetComponent<RectTransform>();
             _canvasGroup = GetComponent<CanvasGroup>();
         }

@@ -1,20 +1,29 @@
-﻿using CharactersSystem.Interfaces;
-using DialogueSystem;
-using Enums;
-using InventorySystem;
+﻿using DragAndDrop;
 using InventorySystem.Interfaces;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace CharactersSystem
 {
-    public class Character : MonoBehaviour
+    public class Character : MonoBehaviour, IDropHandler
     {
-        private void OnTriggerEnter2D(Collider2D other)
+        public void OnDrop(PointerEventData eventData)
         {
-            if (other.TryGetComponent(out IItem item)) {
-                print(item.Id);
-            };
+            if (eventData.pointerDrag == null ||
+                !eventData.pointerDrag.TryGetComponent(out RectTransform rectTransform))
+                return;
             
+            if (!rectTransform.TryGetComponent(out ItemDragManager item))
+                return;
+
+            if (item.ParentBeforeDrag != null)
+            {
+                rectTransform.SetParent(item.ParentBeforeDrag);
+                rectTransform.localPosition = Vector3.zero;
+                return;
+            }
+            
+            eventData.pointerDrag.transform.position = item.PositionBeforeDrag;
         }
     }
 }

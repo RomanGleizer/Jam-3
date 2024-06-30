@@ -4582,7 +4582,7 @@ MonoBehaviour:
   name: 
   description: 
   image: {fileID: 0}
-  endPosition: {x: 0, y: 0, z: 0}
+  endPosition: {x: 1, y: 0, z: 0}
 --- !u!225 &2051766026
 CanvasGroup:
   m_ObjectHideFlags: 0
