@@ -8,6 +8,7 @@ public class EndPosition : MonoBehaviour, IDropHandler
     [SerializeField] private int itemId;
     [SerializeField] private Character char1;
     [SerializeField] private Character char2;
+    [SerializeField] private LevelChanger levelChanger;
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -25,6 +26,7 @@ public class EndPosition : MonoBehaviour, IDropHandler
             rectTransform.gameObject.SetActive(false);
             char1.EndSpeech(itemId);
             char2.EndSpeech(itemId);
+            levelChanger.countOfItem++;
         }
             
     }

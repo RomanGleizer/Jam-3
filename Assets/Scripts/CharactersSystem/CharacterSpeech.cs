@@ -23,7 +23,7 @@ public class CharacterSpeech : MonoBehaviour
     public void SpeechOn()
     {
         speech.SetActive(true);
-        Invoke("SpeechOff", 5f);
+        Invoke("SpeechOff", 10f);
     }
 
     public void SpeechOff()
